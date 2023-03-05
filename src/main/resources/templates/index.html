@@ -1,0 +1,124 @@
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="fragments:: head">
+</head>
+
+<body>
+<div id="wrapper">
+    <nav th:replace="fragments :: firstNav">
+    </nav>
+    <!--/. NAV TOP  -->
+    <nav th:replace="fragments :: secondNav">
+    </nav>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header">
+                        Dashboard <small>summary of Covid19 App</small>
+                    </h1>
+                    <div th:if="${notFound}" class="alert alert-danger">
+                        <strong>Sorry</strong> This case does not exist in system.
+                    </div>
+
+                    <form th:action="@{/getById}" method="get" role="form">
+                        <div class="form-group input-group">
+                            <input type="text" name="id" th:value="${id}" class="form-control" placeholder="Find case by Patient ID">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                                </span>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="panel panel-primary text-center no-boder bg-color-green green">
+                        <div class="panel-left pull-left brown">
+                            <i class="fa fa-head-side-virus fa-5x"></i>
+
+                        </div>
+                        <div class="panel-right">
+                            <h3 th:text="${casesCount}"></h3>
+                            <strong> Total Cases</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="panel panel-primary text-center no-boder bg-color-blue">
+                        <div class="panel-left pull-left red">
+                            <i class="fa fa-head-side-cough fa-5x"></i>
+                        </div>
+
+                        <div class="panel-right">
+                            <h3 th:text="${symptomsCount}"></h3>
+                            <strong> with Symptoms</strong>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="panel panel-primary text-center no-boder bg-color-red">
+                        <div class="panel-left pull-left green">
+                            <i class="fa fa fa-syringe fa-5x"></i>
+
+                        </div>
+                        <div class="panel-right">
+                            <h3 th:text="${vaccinatedCount}"></h3>
+                            <strong> Vaccinated </strong>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="panel panel-primary text-center no-boder bg-color-brown">
+                        <div class="panel-left pull-left blue">
+                            <i class="fa fa-users fa-5x"></i>
+
+                        </div>
+                        <div class="panel-right">
+                            <h3 th:text="${casesCount}"></h3>
+                            <strong>No. of Patients</strong>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <footer th:replace="fragments :: footer">
+            </footer>
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+</div>
+<!-- /. WRAPPER  -->
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<script src="assets/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Js -->
+<script src="assets/js/jquery.metisMenu.js"></script>
+<!-- Morris Chart Js -->
+<script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+<script src="assets/js/morris/morris.js"></script>
+
+
+<script src="assets/js/easypiechart.js"></script>
+<script src="assets/js/easypiechart-data.js"></script>
+
+<script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
+
+<!-- Custom Js -->
+<script src="assets/js/custom-scripts.js"></script>
+
+
+</body>
+
+</html>

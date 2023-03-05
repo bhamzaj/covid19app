@@ -1,0 +1,105 @@
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="fragments:: head">
+</head>
+<body>
+<div id="wrapper">
+    <nav th:replace="fragments :: firstNav">
+    </nav>
+    <!--/. NAV TOP  -->
+    <nav th:replace="fragments :: secondNav">
+    </nav>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header">
+                        Covid case <small>details </small>
+                    </h1>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Information
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table  table-hover">
+                                    <tbody>
+                                    <tr>
+                                        <td>Patients' ID</td>
+                                        <td th:text="${covid_case.patientId}"></td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Patients' full name</td>
+                                        <td th:text="${covid_case.fullName}"></td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Date of birth</td>
+                                        <td th:text="${covid_case.dob}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gender</td>
+                                        <td th:text="${covid_case.gender}" ></td>
+                                    </tr>
+                                    <tr>
+                                        <td>City </td>
+                                        <td th:text="${covid_case.city}" ></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Has symptoms? </td>
+                                        <td th:text="${covid_case.hasSymptoms}"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Is vaccinated? </td>
+                                        <td th:text="${covid_case.vaccinated}"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Underlying disease </td>
+                                        <td th:text="${covid_case.disease}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Case timestamp </td>
+                                        <td th:text="${covid_case.caseTimestamp}"></td>
+                                    </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <a href="casesList" class="btn btn-default"><i class="fas fa-arrow-left"></i>Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <footer th:replace="fragments :: footer">
+            </footer>
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+</div>
+<!-- /. WRAPPER  -->
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<script src="assets/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- Metis Menu Js -->
+<script src="assets/js/jquery.metisMenu.js"></script>
+<!-- Custom Js -->
+<script src="assets/js/custom-scripts.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="fragments:: head">
+</head>
+<body>
+<div id="wrapper">
+    <nav th:replace="fragments :: firstNav">
+    </nav>
+    <!--/. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+
+                <li>
+                    <a href="/"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="registerCase"><i class="fa fa-fw fa-file"></i> Add new case</a>
+                </li>
+                <li>
+                    <a class="active-menu" href="casesList"><i class="fa fa-table"></i> Show all cases</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header">
+                        Cases <small>registered in database</small>
+                    </h1>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Advanced Tables
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name of Patient</th>
+                                        <!--<th>Birthday</th>-->
+                                        <th>Gender</th>
+                                        <!--<th>City</th>-->
+                                        <th>Symptoms</th>
+                                        <th>Vaccinated</th>
+                                        <th>Disease</th>
+                                        <th>Date</th>
+                                        <th>Show</th>
+                                        <th>Edit</th>
+                                        <th>Date</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="case:${covid_case_list}" class="odd gradeX">
+                                        <td th:text="${case.patientId}" class="center"></td>
+                                        <td th:text="${case.fullName}"></td>
+                                        <!--<td th:text="${case.dob}"></td>-->
+                                        <td th:text="${case.gender}"></td>
+                                        <!--<td th:text="${case.city}"></td>-->
+                                        <td th:text="${case.hasSymptoms}" class="center"></td>
+                                        <td th:text="${case.vaccinated}" class="center"></td>
+                                        <td th:text="${case.disease}"></td>
+                                        <td th:text="${case.caseTimestamp}"></td>
+                                        <td><a class="btn btn-info btn-sm" th:href="@{'getById?id='+${case.patientId}}">Show</a></td>
+                                        <td><a class="btn btn-primary btn-sm" th:href="@{'editCase?id='+${case.patientId}}">Edit</a></td>
+                                        <td><a class="btn btn-danger btn-sm" th:href="@{'deleteCase?id='+${case.patientId}}">Delete</a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+            <!-- /. ROW  -->
+        </div>
+        <footer th:replace="fragments :: footer">
+        </footer> </div>
+    <!-- /. PAGE INNER  -->
+</div>
+<!-- /. PAGE WRAPPER  -->
+<!-- /. WRAPPER  -->
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<script src="assets/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- Metis Menu Js -->
+<script src="assets/js/jquery.metisMenu.js"></script>
+<!-- DATA TABLE SCRIPTS -->
+<script src="assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+<script>
+/*<![CDATA[*/
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
+/*]]>*/
+</script>
+<!-- Custom Js -->
+<script src="assets/js/custom-scripts.js"></script>
+
+
+</body>
+</html>

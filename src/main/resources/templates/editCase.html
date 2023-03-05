@@ -1,0 +1,169 @@
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="fragments:: head">
+</head>
+<body>
+<div id="wrapper">
+    <nav th:replace="fragments :: firstNav">
+    </nav>
+    <nav th:replace="fragments :: secondNav">
+    </nav>
+    <!--/. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+
+                <li>
+                    <a href="/"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a class="active-menu" href="registerCase"><i class="fa fa-fw fa-file"></i> Add new case</a>
+                </li>
+                <li>
+                    <a href="casesList"><i class="fa fa-table"></i> Show all cases</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header">
+                        Update <small>selected covid case.</small>
+                    </h1>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <br />
+                        <div th:if="${msg}" class="alert alert-success">
+                            <strong>Well done!</strong> You successfully updated this case.
+                        </div>
+                        <div class="panel-heading">
+                            Enter case information below
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <form role="form" action="#" th:action="@{/updateCase}" th:object="${covid_case}"  method="post">
+
+                                        <div class="form-group">
+                                            <label>Patients' ID:</label>
+                                            <input th:field="*{patientId}" class="form-control" placeholder="ID of Patient">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Patients' full name:</label>
+                                            <input th:field="*{fullName}" class="form-control" placeholder="Enter Patients' full name">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Patients' date of birth</label>
+                                            <input th:field="*{dob}" class="form-control" placeholder="yyyy-mm-dd">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Patients' Gender</label>
+                                            <div class="radio">
+                                                <label>
+                                                    <input th:field="*{gender}" type="radio" name="optionsRadios" id="optionsRadios1" value="Male" checked="">Male
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input th:field="*{gender}" type="radio" name="optionsRadios" id="optionsRadios2" value="Female">Female
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <input th:field="*{city}" class="form-control" placeholder="Enter city">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Patient has symptoms? </label>
+                                            <label class="radio-inline">
+                                                <input th:field="*{hasSymptoms}" type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="Yes" checked="">Yes
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input th:field="*{hasSymptoms}" type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="No">No
+                                            </label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Patient is vaccinated? </label>
+                                            <label class="checkbox-inline">
+                                                <input th:field="*{vaccinated}" type="checkbox">Yes
+                                            </label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Underlying disease for the patient:</label>
+                                            <select th:field="*{disease}" class="form-control">
+                                                <option th:each="p : ${diseaseOptions}" th:value="${p}" th:text="${p}" />
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Case timestamp</label>
+                                            <input th:field="*{caseTimestamp}" class="form-control" placeholder="Case timestamp">
+                                        </div>
+
+                                        <button type="submit" class="btn btn-default"><i class=" fa fa-sync-alt "></i> Update</button>
+                                        <a href="casesList" class="btn btn-default">Cancel</a>
+                                    </form>
+
+                                </div>
+
+
+                                <!-- /.col-lg-6 (nested) -->
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            Information
+                                        </div>
+                                        <div class="panel-body">
+                                            <p>
+                                                *Please note, if you are a household contact, your quarantine period will begin after the case is released from  isolation.
+                                            </p>
+                                        </div>
+                                        <div class="panel-footer">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <footer th:replace="fragments :: footer">
+            </footer>
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+</div>
+<!-- /. WRAPPER  -->
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<script src="assets/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- Metis Menu Js -->
+<script src="assets/js/jquery.metisMenu.js"></script>
+<!-- Custom Js -->
+<script src="assets/js/custom-scripts.js"></script>
+
+
+</body>
+</html>
